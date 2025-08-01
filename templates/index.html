@@ -1,10 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Better Sources</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-$END$
+
+  <h1>Better Sources</h1>
+
+  <div class="warning-banner">
+    📚 <strong>Note:</strong> This tool uses public book databases. Not all results will be perfectly aligned.
+    If no recommendations are shown, please try simplifying your topic or goal.
+  </div>
+
+  <form method="POST">
+    <label for="topics">Topics you're interested in (comma-separated):</label><br>
+    <input type="text" id="topics" name="topics" required><br><br>
+
+    <label for="goals">What do you want to learn or understand better?</label><br>
+    <input type="text" id="goals" name="goals"><br><br>
+
+    <input type="submit" value="Find Sources">
+  </form>
+
+  {% if sources %}
+    <div class="response-box">
+      {{ sources[0]|safe }}
+    </div>
+  {% endif %}
+
+  <div class="follow-links">
+    <p>
+      Follow on <a href="https://x.com/BetterToolsAI" target="_blank">@BetterToolsAI</a> &nbsp;|&nbsp;
+      Read more at <a href="https://charlestools.substack.com" target="_blank">charlestools.substack.com</a>
+    </p>
+  </div>
+
+  <footer>
+    <p class="disclaimer-text">
+      ⚠️ This tool does not provide professional educational advice or endorsements. Results are drawn from public databases and GPT summarization. Always cross-reference sources when researching important topics.
+    </p>
+    <p class="mvp-note">
+      This is an MVP. I build fast and validate before polish. If it’s useful, it grows. If not, it costs nothing.
+    </p>
+  </footer>
+
 </body>
 </html>

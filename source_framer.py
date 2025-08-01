@@ -63,4 +63,4 @@ def frame_sources(book_list, topics, goals):
         reply_html = markdown.markdown(reply)
         return [reply_html, get_disclaimer_text()]
     except Exception as e:
-        return [f"⚠️ GPT framing failed:\n\n{str(e)}", get_disclaimer_t]()
+        return [f"⚠️ GPT framing failed:\n\n{str(e)}", get_disclaimer_text()]
