@@ -9,7 +9,7 @@ def search_books(topics, goals):
     Returns a simplified list of book metadata for GPT framing.
     """
     base_url = "https://openlibrary.org/search.json"
-    query = " ".join(topics + goals)
+    query = " OR ".join(topics + goals)
     print(f"📚 Open Library Query: {query}")
 
     params = {
@@ -22,6 +22,7 @@ def search_books(topics, goals):
         return {"error": f"Open Library query failed: {response.status_code}"}
 
     results = response.json()
+    print("📦 Open Library raw response:", results)
     books = results.get("docs", [])[:10]
 
     simplified = []
